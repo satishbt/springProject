@@ -5,6 +5,10 @@ import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.beans.factory.annotation.Value;
 
 import java.io.IOException;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
+import java.util.Date;
 import java.util.List;
 
 import javax.persistence.EntityManager;
@@ -22,6 +26,7 @@ import org.springframework.orm.hibernate5.HibernateTransactionManager;
 import org.springframework.stereotype.Component;
 
 import com.app.stock.model.Fund;
+import com.app.stock.model.PortfolioStock;
 import com.app.stock.model.Stock;
 import com.app.stock.service.FundService;
 import com.app.stock.service.StockService;
@@ -32,23 +37,29 @@ public class MoneycontrolApplication {
 	
 	public static void main(String[] args) {
 		ApplicationContext context = SpringApplication.run(MoneycontrolApplication.class, args);
-		getSmallMFList(context);
+	 
+
 		FundService fundservice = context.getBean(FundService.class);
-		List<Fund> fundList = fundservice.getAllMFLinks();
-		for(Fund fund : fundList){
-			
-				getPortfolioLink(fund);
-				fundservice.addFund(fund);
-				try {
-					Thread.sleep(200);
-				} catch (InterruptedException e) {
-					// TODO Auto-generated catch block
-					e.printStackTrace();
-				}
-				
-			
-			
-		}
+//		List<Fund> fundList = fundservice.getAllMFLinks();
+//		for(Fund fund : fundList){
+//			try {
+//				Thread.sleep(2000);
+//			} catch (InterruptedException e) {
+//				// TODO Auto-generated catch block
+//				e.printStackTrace();
+//			}
+//				getPortfolioLink(fund);
+//				fundservice.addFund(fund);
+//				try {
+//					Thread.sleep(2000);
+//				} catch (InterruptedException e) {
+//					// TODO Auto-generated catch block
+//					e.printStackTrace();
+//				}
+//				
+//			
+//			
+//		}
 		
 		
 //		getPortfolioData(context);
@@ -64,13 +75,29 @@ public class MoneycontrolApplication {
 			Elements portFolioElem = doc.getElementsByAttributeValue("class", "tblporhd");
 			Element portFolioTable = portFolioElem.get(0);
 			Elements portFolios = portFolioTable.getElementsByTag("tr");
+			Elements folioDateElem = doc.getElementsByAttributeValue("class", "mainCont port_hold");
+			String date = folioDateElem.get(0).getElementsByTag("h3").get(0).getElementsByTag("span").text();
+			String foliodate = date.substring(1, date.length()-1);
+			
+			SimpleDateFormat formatter = new SimpleDateFormat("MMM dd, yyyy");
+			Date convertedDate = null;
+			try {
+				convertedDate = formatter.parse(foliodate);
+			} catch (ParseException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+			System.out.println(" Date :"+foliodate + " converted To "+convertedDate);
+//			Date date = new Date
 			Stock stockDetails ;
+			PortfolioStock portfolio;
 			StockService service = context.getBean(StockService.class);
 			for(Element portFolio:portFolios){
 //				System.out.println("portFolio :"+portFolio);
 				Elements portFolioDetails = portFolio.getElementsByTag("td");
 				if(portFolioDetails.size() > 0 ){
 					stockDetails = new Stock();
+					portfolio = new PortfolioStock();
 					Elements folioLink = portFolioDetails.get(0).select("a[href]");
 					String moneyControlLink = folioLink.attr("abs:href");
 					String[] stockCodes = moneyControlLink.split("/");
@@ -84,11 +111,17 @@ public class MoneycontrolApplication {
 					stockDetails.setStockName(stockName);
 					stockDetails.setStockCode(stockCode);
 					stockDetails.setStockCategory(stockCategory);
-//					stockDetails.setFolioCategory(folioCategory);
-//					stockDetails.setFolioQuantity(folioQuantity);
-//					stockDetails.setFolioAmountIncrore(folioAmountIncrore));
-//					stockDetails.setFolioPercentage(folioPercentage);
+					stockDetails.setStockLink(moneyControlLink);
+
+					portfolio.setPercentage(Double.parseDouble(folioPercentage));
+					portfolio.setFoliodate(convertedDate);					
+					portfolio.setStockCode(stockCode);
+					portfolio.setQuantity(folioQuantity);
+					portfolio.setFundName("");
+					portfolio.setAmount(Double.parseDouble(folioAmountIncrore));
+					
 					service.addStock(stockDetails);
+					service.addPortfolio(portfolio);
 				}
 				
 			}

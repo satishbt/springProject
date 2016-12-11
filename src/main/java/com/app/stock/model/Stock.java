@@ -45,6 +45,17 @@ public class Stock {
 	@Column(name ="category")
 	private String stockCategory ;
 	
+	@Column(name ="mclink")
+	private String stockLink;
+	
+	public String getStockLink() {
+		return stockLink;
+	}
+
+	public void setStockLink(String stockLink) {
+		this.stockLink = stockLink;
+	}
+
 	@Override
 	public String toString() {
 		 

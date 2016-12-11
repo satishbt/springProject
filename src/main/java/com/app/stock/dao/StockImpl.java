@@ -13,6 +13,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
+import com.app.stock.model.PortfolioStock;
 import com.app.stock.model.Stock;
 @Repository
 public class StockImpl implements StockDAO {
@@ -36,7 +37,8 @@ public class StockImpl implements StockDAO {
 		 System.out.println("session:"+session);
 		 System.out.println(stock.getStockCode());
 //		 session.persist(stock);
-		 session.saveOrUpdate(stock);
+//		 session.saveOrUpdate(stock);
+		 session.merge(stock);
 
 	}
 
@@ -50,6 +52,13 @@ public class StockImpl implements StockDAO {
 			 System.out.println("Phone inf :"+ s.toString());
 		 }
 		 return stockList;
+	}
+
+	@Override
+	@Transactional
+	public void addPortfolio(PortfolioStock portfolio) {
+		Session session = this.sessionFactory.getCurrentSession();
+		session.save(portfolio);
 	}
 
 }
