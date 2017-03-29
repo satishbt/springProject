@@ -1,156 +1,155 @@
 package com.app.stock.model;
- 
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
-
 @Entity
-@Table(name="funds")
+@Table(name = "funds")
 public class Fund {
-	
-	@Id
-	@Column(name = "name")
-	private String name;
-	
-	public String getName() {
-		return name;
-	}
 
-	public void setName(String name) {
-		this.name = name;
-	}
+    @Id
+    @Column(name = "name")
+    private String name;
 
-	public String getlink() {
-		return link;
-	}
+    public String getName() {
+	return name;
+    }
 
-	public void setlink(String link) {
-		this.link = link;
-	}
+    public void setName(String name) {
+	this.name = name;
+    }
 
-	public String getCategory() {
-		return category;
-	}
+    public String getlink() {
+	return link;
+    }
 
-	public void setCategory(String category) {
-		this.category = category;
-	}
+    public void setlink(String link) {
+	this.link = link;
+    }
 
-	public String getCrisilrank() {
-		return crisilrank;
-	}
+    public String getCategory() {
+	return category;
+    }
 
-	public void setCrisilrank(String crisilrank) {
-		this.crisilrank = crisilrank;
-	}
+    public void setCategory(String category) {
+	this.category = category;
+    }
 
-	public String getAum() {
-		return aum;
-	}
+    public String getCrisilrank() {
+	return crisilrank;
+    }
 
-	public void setAum(String aum) {
-		this.aum = aum;
-	}
+    public void setCrisilrank(String crisilrank) {
+	this.crisilrank = crisilrank;
+    }
 
-	public String getOneMonthReturn() {
-		return oneMonthReturn;
-	}
+    public String getAum() {
+	return aum;
+    }
 
-	public void setOneMonthReturn(String oneMonthReturn) {
-		this.oneMonthReturn = oneMonthReturn;
-	}
+    public void setAum(String aum) {
+	this.aum = aum;
+    }
 
-	public String getThreeMonthReturn() {
-		return threeMonthReturn;
-	}
+    public String getOneMonthReturn() {
+	return oneMonthReturn;
+    }
 
-	public void setThreeMonthReturn(String threeMonthReturn) {
-		this.threeMonthReturn = threeMonthReturn;
-	}
+    public void setOneMonthReturn(String oneMonthReturn) {
+	this.oneMonthReturn = oneMonthReturn;
+    }
 
-	public String getSixMonthReturn() {
-		return sixMonthReturn;
-	}
+    public String getThreeMonthReturn() {
+	return threeMonthReturn;
+    }
 
-	public void setSixMonthReturn(String sixMonthReturn) {
-		this.sixMonthReturn = sixMonthReturn;
-	}
+    public void setThreeMonthReturn(String threeMonthReturn) {
+	this.threeMonthReturn = threeMonthReturn;
+    }
 
-	public String getOneYearReturn() {
-		return oneYearReturn;
-	}
+    public String getSixMonthReturn() {
+	return sixMonthReturn;
+    }
 
-	public void setOneYearReturn(String oneYearReturn) {
-		this.oneYearReturn = oneYearReturn;
-	}
+    public void setSixMonthReturn(String sixMonthReturn) {
+	this.sixMonthReturn = sixMonthReturn;
+    }
 
-	public String getTwoYearReturn() {
-		return twoYearReturn;
-	}
+    public String getOneYearReturn() {
+	return oneYearReturn;
+    }
 
-	public void setTwoYearReturn(String twoYearReturn) {
-		this.twoYearReturn = twoYearReturn;
-	}
+    public void setOneYearReturn(String oneYearReturn) {
+	this.oneYearReturn = oneYearReturn;
+    }
 
-	public String getThreeYearReturn() {
-		return threeYearReturn;
-	}
+    public String getTwoYearReturn() {
+	return twoYearReturn;
+    }
 
-	public void setThreeYearReturn(String threeYearReturn) {
-		this.threeYearReturn = threeYearReturn;
-	}
+    public void setTwoYearReturn(String twoYearReturn) {
+	this.twoYearReturn = twoYearReturn;
+    }
 
-	public String getFiveYearReturn() {
-		return fiveYearReturn;
-	}
+    public String getThreeYearReturn() {
+	return threeYearReturn;
+    }
 
-	public void setFiveYearReturn(String fiveYearReturn) {
-		this.fiveYearReturn = fiveYearReturn;
-	}
-	
-	public void setportFolioLink(String portfolioLink) {
-		this.portFolioLink = portfolioLink;
-	}
+    public void setThreeYearReturn(String threeYearReturn) {
+	this.threeYearReturn = threeYearReturn;
+    }
 
-	public String getportFolioLink(){
-		return this.portFolioLink;
-	}
-	
-	@Column(name = "link")
-	private String link;
-	
-	@Column(name = "category")
-	private String category;
-	
-	@Column(name = "crisilrank")
-	private String crisilrank;
-	
-	@Column(name = "aum")
-	private String aum;
-	
-	@Column(name = "oneMonthReturn")
-	private String oneMonthReturn;
-	
-	@Column(name = "threeMonthReturn")
-	private String threeMonthReturn;
-	
-	@Column(name = "sixMonthReturn")
-	private String sixMonthReturn;
-	
-	@Column(name = "oneYearReturn")
-	private String oneYearReturn;
-	
-	@Column(name = "twoYearReturn")
-	private String twoYearReturn;
-	
-	@Column(name = "threeYearReturn")
-	private String threeYearReturn;
-	
-	@Column(name = "fiveYearReturn")
-	private String fiveYearReturn;
-	
-	@Column(name = "portfolioLink")
-	private String portFolioLink;
+    public String getFiveYearReturn() {
+	return fiveYearReturn;
+    }
+
+    public void setFiveYearReturn(String fiveYearReturn) {
+	this.fiveYearReturn = fiveYearReturn;
+    }
+
+    public void setportFolioLink(String portfolioLink) {
+	this.portFolioLink = portfolioLink;
+    }
+
+    public String getportFolioLink() {
+	return this.portFolioLink;
+    }
+
+    @Column(name = "link")
+    private String link;
+
+    @Column(name = "category")
+    private String category;
+
+    @Column(name = "crisilrank")
+    private String crisilrank;
+
+    @Column(name = "aum")
+    private String aum;
+
+    @Column(name = "oneMonthReturn")
+    private String oneMonthReturn;
+
+    @Column(name = "threeMonthReturn")
+    private String threeMonthReturn;
+
+    @Column(name = "sixMonthReturn")
+    private String sixMonthReturn;
+
+    @Column(name = "oneYearReturn")
+    private String oneYearReturn;
+
+    @Column(name = "twoYearReturn")
+    private String twoYearReturn;
+
+    @Column(name = "threeYearReturn")
+    private String threeYearReturn;
+
+    @Column(name = "fiveYearReturn")
+    private String fiveYearReturn;
+
+    @Column(name = "portfolioLink")
+    private String portFolioLink;
 }

@@ -5,6 +5,7 @@ import java.util.List;
 import com.app.stock.model.Fund;
 
 public interface FundDAO {
-	public void addFund(Fund fund);
-	public List<Fund> getAllLinks();
+    public void addFund(Fund fund);
+
+    public List<Fund> getAllLinks();
 }

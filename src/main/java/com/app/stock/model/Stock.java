@@ -10,76 +10,76 @@ import javax.validation.constraints.NotNull;
 @Table(name = "STOCKS")
 public class Stock {
 
-	public String getStockCode() {
-		return stockCode;
-	}
+    public String getStockCode() {
+	return stockCode;
+    }
 
-	public void setStockCode(String stockCode) {
-		this.stockCode = stockCode;
-	}
+    public void setStockCode(String stockCode) {
+	this.stockCode = stockCode;
+    }
 
-	public String getStockName() {
-		return stockName;
-	}
+    public String getStockName() {
+	return stockName;
+    }
 
-	public void setStockName(String stockName) {
-		this.stockName = stockName;
-	}
-	
-	public String getStockCategory() {
-		return stockCategory;
-	}
+    public void setStockName(String stockName) {
+	this.stockName = stockName;
+    }
 
-	public void setStockCategory(String stockCategory) {
-		this.stockCategory = stockCategory;
-	}
-	
-	@Id
-	@Column(name = "stockcode")
-	private String stockCode ;
-	
-	@NotNull
-	@Column(name = "stockname")
-	private String stockName ;
-	
-	@Column(name ="category")
-	private String stockCategory ;
-	
-	@Column(name ="mclink")
-	private String stockLink;
-	
-	public String getStockLink() {
-		return stockLink;
-	}
+    public String getStockCategory() {
+	return stockCategory;
+    }
 
-	public void setStockLink(String stockLink) {
-		this.stockLink = stockLink;
-	}
+    public void setStockCategory(String stockCategory) {
+	this.stockCategory = stockCategory;
+    }
 
-	@Override
-	public String toString() {
-		 
-		return "Stock Name :"+this.stockName +" stockName : " +this.stockName;
+    @Id
+    @Column(name = "stockcode")
+    private String stockCode;
+
+    @NotNull
+    @Column(name = "stockname")
+    private String stockName;
+
+    @Column(name = "category")
+    private String stockCategory;
+
+    @Column(name = "mclink")
+    private String stockLink;
+
+    public String getStockLink() {
+	return stockLink;
+    }
+
+    public void setStockLink(String stockLink) {
+	this.stockLink = stockLink;
+    }
+
+    @Override
+    public String toString() {
+
+	return "Stock Name :" + this.stockName + " stockName : " + this.stockName;
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+	if (obj == null)
+	    return false;
+	if (obj.getClass() == getClass()) {
+	    Stock s = (Stock) obj;
+	    if (s.stockCode == this.stockCode) {
+		return true;
+	    }
 	}
-	
-	@Override
-	public boolean equals(Object obj) {
-		if( obj == null)
-			return false;
-		if(obj.getClass() == getClass()){
-			Stock s = (Stock) obj;
-			if( s.stockCode == this.stockCode){
-				return true;
-			}
-		} 
-		return false;
-	}
-	
-	@Override
-	public int hashCode(){
-		final int prime = 31;
-		int result = 1;
-		result = prime * result +  stockCode.hashCode();
-		return result;
-	}
+	return false;
+    }
+
+    @Override
+    public int hashCode() {
+	final int prime = 31;
+	int result = 1;
+	result = prime * result + stockCode.hashCode();
+	return result;
+    }
 }
